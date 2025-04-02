@@ -22,6 +22,7 @@ Docker Compose 是 Docker 的一个工具，专门用于定义和管理多容器
 
 Docker Compose 文件通常命名为 `docker-compose.yaml`，它使用 YAML 语法来描述服务、网络和存储空间。一个基本的 Compose 文件结构如下：
 
+
 ```yaml
 version: '3'
 services:

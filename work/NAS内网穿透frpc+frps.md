@@ -15,12 +15,11 @@
 
 ## 第一步：搭建 frps、Nginx Proxy Manager
 
-### Frps
-
+## 部署Frps
 **VPS 路径：**/home 新建一个 `/frps` 和 `/npm` 文件夹。
 
-![本地图片](/img/image-byes.png)
-![本地图片](/img/image-epuo.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-byes.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-epuo.png)
 在 `/home/frps` 文件夹中添加 `docker-compose.yml` 和 `frps.toml` 两个文件，并填写下方代码：
 
 **docker-compose.yml**
@@ -82,14 +81,14 @@ udpPacketSize = 1500
 natholeAnalysisDataReserveHours = 168
 
  ````
-cd /home/frps
+> cd /home/frps
 
-docker compose up -d
+> docker compose up -d
 
-然后就启动容器啦
+> 然后就启动容器啦
 
 
-**Nginx Proxy Manager**
+## 部署Nginx Proxy Manager
 ```yaml
 version: "3.5"
 services:
@@ -114,18 +113,18 @@ networks:
     name: nginx
  
 ````
-cd /home/nmp
+>  cd /home/nmp
 
-docker compose up -d
+> docker compose up -d
 
-部署后访问VPSIP:81即可
+> 部署后访问VPSIP:81即可
 ## 第二步：搭建 Frpc
 搭建方式很多，本文使用 **Docker Compose** 搭建
 
 # 注意事项
 同 `frps`，为避免因 `frpc.toml` 文件的挂载、格式或者配置错误导致容器无法正常运行并循环重启，请确保先配置好 `frpc.toml` 后再执行启动。
-![本地图片](/img/image-wkhg.png)
-![本地图片](/img/image-gmth.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-wkhg.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-gmth.png)
 
 
 
@@ -178,7 +177,7 @@ services:  # 服务定义
 
 ## 第三步：将二级域名 DNS A 类型解析至 VPS 的 IP
 
-## 域名解析
+> <span style="color:red">域名解析</span>
 1. 登录您的域名管理平台（如阿里云、腾讯云、Cloudflare 等）。
 2. 找到域名的 **DNS 解析设置**。
 3. 添加一条 **A 记录**，配置如下：
@@ -187,18 +186,18 @@ services:  # 服务定义
    - **记录值**：填写您的 VPS 的 IP 地址
    - **TTL**：默认值或根据需求调整
 
-### 示例
+> <span style="color:red">示例</span>
 以阿里云 DNS 解析为例：
 - **主机记录**：`*`
 - **记录类型**：`A`
 - **记录值**：`123.123.123.123`（替换为您的 VPS IP 地址）
 - **TTL**：`600`（默认值）
 
-### 注意事项
+> <span style="color:red">注意事项</span>
 - 通配符 `*` 表示所有二级域名，例如 `sub1.example.com`、`sub2.example.com` 等都会解析到该 IP。
 - 解析生效时间取决于 TTL 设置，通常需要几分钟到几小时。
 
-![本地图片](/img/image-vlih.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-vlih.png)
 
 ## 第四步：配置 Nginx Proxy Manager
 
@@ -219,9 +218,9 @@ services:  # 服务定义
 1. 使用注册的账号或默认账号登录。
 2. 登录后，您将进入 Nginx Proxy Manager 的管理界面，可以开始配置反向代理、SSL 证书等。
 
-![本地图片](/img/image-kvnq.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-kvnq.png)
 
 ## 申请证书
-![本地图片](/img/image-edvo.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-edvo.png)
 ## 然后就可以访问了
-![本地图片](/img/image-nlgn.png)
+![本地图片](/img/work/NAS内网穿透frpc+frps/image-nlgn.png)

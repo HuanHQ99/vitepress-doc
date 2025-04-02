@@ -19,10 +19,15 @@ export default defineConfig({
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' },
+        ],
+      },
+      {
+        text: 'NAS相关',
+        items: [
           { text: '什么是项目（Docker-Compose）', link: '/work/什么是docker-compose' },
           { text: 'NAS内网穿透frpc+frps', link: '/work/NAS内网穿透frpc+frps.md' },
-        ]
-      }
+        ],
+      },
     ],
 
     socialLinks: [
