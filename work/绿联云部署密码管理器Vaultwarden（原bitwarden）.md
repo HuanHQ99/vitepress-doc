@@ -27,4 +27,4 @@ networks: {}
 
 ````
 Docker部署
-1、打开文件管理，在docker目录下新建Vaultwarden目录用来存储配置文件
+1、打开文件管理，在docker目录下新建Vaultwarden目录用来存储配置文件666
