@@ -30,7 +30,7 @@ jobs:
                 username: ${{ secrets.SSH_USERNAME }}
                 key: ${{ secrets.SSH_KEY }}
                 port: ${{ secrets.SSH_PORT }}
-                source: ".vitepress/dist/*"
+                source: "./.vitepress/dist/*"
                 target: ${{ secrets.SSH_TARGET_PATH }}
             - name: Upload Pages artifacts
               id: deployment
