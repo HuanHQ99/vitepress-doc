@@ -11,16 +11,14 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-            - name: Prepare pnpm
-              uses: pnpm/action-setup@v4
             - name: Prepare Node.js 22
               uses: actions/setup-node@v4
               with:
                 node-version: 22
             - name: Install dependencies
-              run: pnpm install
+              run: npm install
             - name: Generate site
-              run: pnpm docs:build
+              run: npm run docs:build
             - name: Upload artifacts
               id: deployment
               uses: actions/upload-pages-artifact@v3
