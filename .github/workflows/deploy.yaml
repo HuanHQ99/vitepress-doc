@@ -26,5 +26,5 @@ jobs:
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 publish_branch: gh_pages
-                publish_dir: ./docs/.vitepress/dist
+                publish_dir: .vitepress/dist
                 cname: doc.huanhq.com

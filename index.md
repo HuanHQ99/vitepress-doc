@@ -7,7 +7,7 @@ hero:
   text: ""
   tagline: 分享NAS教程、Dokcer Compose
   image: 
-    src: /img/icon/favicon.png
+    src: /img/icon/logo.png
     alt: /背景图片
   actions:
     - theme: brand
