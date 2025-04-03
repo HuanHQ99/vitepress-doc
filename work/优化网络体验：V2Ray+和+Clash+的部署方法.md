@@ -96,7 +96,7 @@ Docker部署
 将config.yaml geoip.metadb文件放置/docker/mihomo/config目录下
 
 config文件自己去clash客户端下载
-[geoip.metadb下载地址](/file/geoip.metadb)
+[geoip.metadb下载地址](/)
 （由于可能网络原因拉不动，可以直接使用我的）
 ![本地图片](/img/work/优化网络体验：V2Ray+和+Clash+的部署方法/image-13.png)
 > 映射路径：共享文件夹/docker/mihomo/config:/root/.config/mihomo/
