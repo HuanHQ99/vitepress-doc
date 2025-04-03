@@ -23,7 +23,16 @@ jobs:
               run: npm install
             - name: Generate site
               run: npm run docs:build
-            - name: Upload artifacts
+            - name: Deploy to server
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                host: ${{ secrets.SSH_HOST }}
+                username: ${{ secrets.SSH_USERNAME }}
+                key: ${{ secrets.SSH_KEY }}
+                port: ${{ secrets.SSH_PORT }}
+                source: ".vitepress/dist/*"
+                target: ${{ secrets.SSH_TARGET_PATH }}
+            - name: Upload Pages artifacts
               id: deployment
               uses: actions/upload-pages-artifact@v3
               with:
