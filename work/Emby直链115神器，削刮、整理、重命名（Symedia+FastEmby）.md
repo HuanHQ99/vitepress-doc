@@ -114,7 +114,7 @@ webhook监控
 
 上传webhook.toml 文件到cd2的config目录，修改base_url为自己的sa实际IP地址
 
-[webhook.toml](public/file/webhook.toml.zip)
+[webhook.toml](/public/file/webhook.toml.zip)
 
 不能直接下载webhook.toml，则下载zip文件解压
 
