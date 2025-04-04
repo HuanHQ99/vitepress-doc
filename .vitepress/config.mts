@@ -5,11 +5,12 @@ export default defineConfig({
   title: "HuanHQ技术栈",
   description: "A VitePress Site",
   themeConfig: {
+    logo: "/img/icon/logo.png",
     outlineTitle: "文章目录",
-    outline: [2, 6],
+    outline: [1, 6],
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
+      { text: '主页', link: '/' },
       { text: 'Examples', link: '/markdown-examples' }
     ],
 
@@ -55,7 +56,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/HuanHQ99/vitepress-doc' }
     ]
   }
 })

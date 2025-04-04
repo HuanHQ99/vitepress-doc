@@ -17,11 +17,29 @@ hero:
       text: 介绍
 
 features:
-  - title: 阅读 📖
-    details: 书是人类进步的阶梯，书籍是知识的摇篮。
-  - title: 写作 ✍️
-    details: 写作是最好的学习方式。
-  - title: 编码 🧑‍💻
-    details: 程序员的能力与他写过的代码是正比的。
+  - title: Symedia
+    icon:
+      src: /public/img/icon/symedia_B.png
+    details:  ”生成strm、刮削元数据集于一身“
+    link: /work/Emby直链115神器，削刮、整理、重命名（Symedia+FastEmby）.md
+    linkText: 查看详情
+  - title: FastEmby
+    icon:
+      src: /public/img/icon/FastEmby.png
+    details:  ”网盘直链302“
+    link: /work/Emby直链115神器，削刮、整理、重命名（Symedia+FastEmby）.md
+    linkText: 查看详情
+  - title: MoviePilotV2
+    icon:
+      src: /public/img/icon/Moviepilot.png
+    details:  ”媒体库管理工具“
+    link: /work/MoviePilot-V2，实现全自动化订阅+整理+削刮+搜索下载的观影一条龙.md
+    linkText: 查看详情
+  - title: Nezha探针
+    icon:
+      src: /public/img/icon/Nezha Monitoring.png
+    details:  ”媒体库管理工具“
+    link: /work/NezhaV1部署教程+Nginx反代.md
+    linkText: 查看详情
 ---
 
