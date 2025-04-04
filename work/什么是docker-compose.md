@@ -42,3 +42,4 @@ services:
       MYSQL_PASSWORD: password
     volumes:
       - ./data:/var/lib/mysql
+      

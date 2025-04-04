@@ -12,10 +12,9 @@ hero:
   actions:
     - theme: brand
       text: 文章
-      link: /markdown-examples
+      link: /work/什么是docker-compose.md
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 介绍
 
 features:
   - title: 阅读 📖
