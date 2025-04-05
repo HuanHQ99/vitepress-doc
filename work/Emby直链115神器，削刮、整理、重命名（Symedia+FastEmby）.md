@@ -532,6 +532,7 @@ services:
     container_name: FastEmby             # 容器名称
     environment:
       - TZ=Asia/Shanghai                 # 环境变量：容器时区
+      - LICENSE_KEY=xxxxx                # 填入Symedia的授权码即可
     volumes:
       - /volume1/docker/FastEmby/config:/app/config  # 配置文件夹映射
       - /volume1/docker/FastEmby/log:/app/log        # 日志文件夹映射

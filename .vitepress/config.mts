@@ -10,7 +10,7 @@ export default defineConfig({
     outline: [1, 6],
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '主页', link: '/' },
+      { text: '首页', link: '/' },
       { text: 'Examples', link: '/markdown-examples' }
     ],
 
@@ -60,3 +60,4 @@ export default defineConfig({
     ]
   }
 })
+
