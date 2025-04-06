@@ -11,32 +11,31 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { text: 'E222xamples', link: '/markdown-examples' },
+      { text: '联系方式', link: '/work/联系方式' },
       {
-        text: 'Resources',
+        text: '公益项目',
         items: [
           {
-            text: 'Team',
-            link: '/team.md',
+            text: '公益图床',
+            link: 'https://img.5100.hk',
           },
           {
-            text: 'Roadmap',
-            link: 'https://github.com/rolldown/rolldown/discussions/153',
+            text: '公益GPT',
+            link: 'https://gpt.5100.hk',
+          },
+          {
+            text: '公益Music',
+            link: 'https://music.5100.hk',
+          },
+          {
+            text: '公益图标库',
+            link: 'https://icon.huanhq.com',
           },
           {
             items: [
               {
-                text: 'Twitter',
-                link: 'https://twitter.com/rolldown_rs',
-              },
-              {
-                text: 'Bluesky',
-                link: 'https://bsky.app/profile/rolldown.rs',
-              },
-              {
-                text: 'Discord Chat',
-                link: 'https://chat.rolldown.rs',
+                text: 'bilbil',
+                link: 'https://space.bilibili.com/3493118026451330?spm_id_from=333.337.search-card.all.click',
               },
             ],
           },

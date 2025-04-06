@@ -41,5 +41,29 @@ features:
     details:  ”媒体库管理工具“
     link: /work/NezhaV1部署教程+Nginx反代.md
     linkText: 查看详情
+  - title: Deepseek
+    icon:
+      src: /img/icon/Deepseek_A.svg
+    details:  ”打造你的AI生产力工具“
+    link: /public/img/work/白嫖火山满血Deepseek,R1、R3，搭配OpenAI，打造你的AI生产力工具！
+    linkText: 查看详情
+  - title: Frpc+Frps
+    icon:
+      src: /public/img/icon/Frp_A.png
+    details:  ”内网穿透frpc+frps“
+    link: /public/img/work/NAS内网穿透frpc+frps
+    linkText: 查看详情
+  - title: Lucky
+    icon:
+      src: /img/icon/Lucky_A.png
+    details:  ”Lucky轻松实现反向代理“
+    link: /work/Lucky轻松实现反向代理
+    linkText: 查看详情
+  - title: Navidrome
+    icon:
+      src: /img/icon/Navidrome.png
+    details:  ”打造私有音乐库“
+    link: /work/work/NAS搭建Navidrome打造私有音乐库-享受极致音乐体验.md
+    linkText: 查看详情
 ---
 
