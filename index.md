@@ -49,7 +49,7 @@ features:
     linkText: 查看详情
   - title: Frpc+Frps
     icon:
-      src: /public/img/icon/Frp_A.png
+      src: /img/icon/Frp_A.png
     details:  ”内网穿透frpc+frps“
     link: /public/img/work/NAS内网穿透frpc+frps
     linkText: 查看详情
