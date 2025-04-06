@@ -8,7 +8,7 @@ const { Layout } = DefaultTheme
     <Layout>
         <template #home-features-before>
             <div class="features-title">
-                <h2 style="font-weight: bold; font-size: 1.2rem; text-align: left;">Symeida专区</h2>
+                <h2 style="font-weight: bold; font-size: 1.2rem; text-align: left;">文章</h2>
             </div>
         </template>
         <template #home-features-after>

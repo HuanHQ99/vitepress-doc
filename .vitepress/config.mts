@@ -12,6 +12,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '联系方式', link: '/work/联系方式' },
+      { text: 'Docker-Compose汇总', link: '/work/Docker-Compose汇总' },
       {
         text: '公益项目',
         items: [
