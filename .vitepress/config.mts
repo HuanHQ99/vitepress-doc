@@ -11,7 +11,37 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Examples', link: '/markdown-examples' },
+      { text: 'E222xamples', link: '/markdown-examples' },
+      {
+        text: 'Resources',
+        items: [
+          {
+            text: 'Team',
+            link: '/team.md',
+          },
+          {
+            text: 'Roadmap',
+            link: 'https://github.com/rolldown/rolldown/discussions/153',
+          },
+          {
+            items: [
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/rolldown_rs',
+              },
+              {
+                text: 'Bluesky',
+                link: 'https://bsky.app/profile/rolldown.rs',
+              },
+              {
+                text: 'Discord Chat',
+                link: 'https://chat.rolldown.rs',
+              },
+            ],
+          },
+        ],
+      },
     ],
 
     sidebar: [
