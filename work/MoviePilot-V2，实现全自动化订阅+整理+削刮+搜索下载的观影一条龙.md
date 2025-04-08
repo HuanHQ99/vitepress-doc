@@ -1,34 +1,42 @@
-免责声明
-学习与交流：MoviePilot 仅供个人学习与交流使用，禁止用于商业目的。
+**免责声明**
 
-禁止视频内容：请勿将 MoviePilot 制作成视频内容，并在国内视频网站上传（涉及版权利益方）。
+**学习与交流：MoviePilot 仅供个人学习与交流使用，禁止用于商业目的。**
 
-法律合规：严禁将 MoviePilot 用于任何违反法律法规的活动。
+**禁止视频内容：请勿将 MoviePilot 制作成视频内容，并在国内视频网站上传（涉及版权利益方）。**
 
-信息传播限制：本教程仅作为个人理解的补充，禁止在国内任何平台进行宣传和传播。
+**法律合规：严禁将 MoviePilot 用于任何违反法律法规的活动。**
 
-个人使用：请确保将 MoviePilot 用于个人学习和非商业化使用，不得以任何形式向第三方分发。
+**信息传播限制：本教程仅作为个人理解的补充，禁止在国内任何平台进行宣传和传播。**
+
+**个人使用：请确保将 MoviePilot 用于个人学习和非商业化使用，不得以任何形式向第三方分发。**
 https://github.com/jxxghp/MoviePilot
-前言
-由于作者已宣布 MoviePilot v1 版本停止更新，后续的维护和功能升级将主要集中在 MoviePilot v2
 
-因此对于已经搭建过 MoviePilot v1 的用户，如果想要部署 v2，需要注意：无法在原有基础上进行部署，需要另行创建独立的容器和新的文件夹
+# 前言
+**由于作者已宣布 MoviePilot v1 版本停止更新，后续的维护和功能升级将主要集中在 MoviePilot v2**
 
-部署前置条件(缺一不可）
-部署V2raya
-部署Qbittorrent下载器
-部署EmbyServer媒体库
-开始部署
-认证方式（只有认证后才能使用某些功能）
-由于2.0.7版本更新，可在变量位置不添加认证站点，直接进入mp后台设置即可
+**因此对于已经搭建过 MoviePilot v1 的用户，如果想要部署 v2，需要注意：无法在原有基础上进行部署，需要另行创建独立的容器和新的文件夹**
+
+## 部署前置条件(缺一不可）
+ - **部署V2raya**
+
+ - **部署Qbittorrent下载器**
+
+ - **部署EmbyServer媒体库**
+
+**开始部署**
+
+**认证方式（只有认证后才能使用某些功能）**
+
+**由于2.0.7版本更新，可在变量位置不添加认证站点，直接进入mp后台设置即可**
 ![本地图片](/public/img/work/MoviePilot-V2/1.png)
-进去首页会出现在这个位置，我是已经设置过了
+**进去首页会出现在这个位置，我是已经设置过了**
 ![本地图片](/public/img/work/MoviePilot-V2/2.png)
-选择你的站点，填写id跟秘钥即可
+**选择你的站点，填写id跟秘钥即可**
 ![本地图片](/public/img/work/MoviePilot-V2/3.png)
-MoviePilot认证站点支持
-
-配置AUTH_SITE后，需要根据下表配置对应站点的认证参数。AUTH_SITE认证站点支持：iyuu/hhclub/audiences/hddolby/zmpt/freefarm/hdfans/wintersakura/leaves/ptba /icc2022/xingtan/ptvicomo/agsvpt/hdkyl/qingwa/discfan/haidan/rousi/sunny
+# MoviePilot认证站点支持
+```yaml
+配置AUTH_SITE后，需要根据下表配置对应站点的认证参数。
+AUTH_SITE认证站点支持：iyuu/hhclub/audiences/hddolby/zmpt/freefarm/hdfans/wintersakura/leaves/ptba /icc2022/xingtan/ptvicomo/agsvpt/hdkyl/qingwa/discfan/haidan/rousi/sunny
 
 站点名
 
@@ -174,34 +182,36 @@ sunny
 
 SUNNY_UID：用户ID
 SUNNY_PASSKEY：密钥
+````
 
-使用那个站点需要将AUTH_SITE环境变量参数配置为站点名称，并在环境变量中填入对应的用户名+密钥。比如我用iyuu方式进行认证，我需要填两个环境变量：AUTH_SITE=iyuu、IYUU_SIGN=IYUU登录令牌
+**使用那个站点需要将AUTH_SITE环境变量参数配置为站点名称，并在环境变量中填入对应的用户名+密钥。比如我用iyuu方式进行认证，我需要填两个环境变量：AUTH_SITE=iyuu、IYUU_SIGN=IYUU登录令牌**
 
-我用zmpt站方式认证需要填三个环境变量：AUTH_SITE=zmpt、ZMPT_UID=用户UID、ZMPT_PASSKEY=密钥 ，其他PT站认证方式类似，在这不过多赘述了。
+**我用zmpt站方式认证需要填三个环境变量：AUTH_SITE=zmpt、ZMPT_UID=用户UID、ZMPT_PASSKEY=密钥 ，其他PT站认证方式类似，在这不过多赘述了。**
 
-简单来说除了IYUU认证方式，其他站点认证都需要填入三个环境变量，分别是站点认证名称（不是站点名称）、用户UID（点个人中心获取）、密钥（一般在站点的控制面板获取）
+**简单来说除了IYUU认证方式，其他站点认证都需要填入三个环境变量，分别是站点认证名称（不是站点名称）、用户UID（点个人中心获取）、密钥（一般在站点的控制面板获取）**
 
-创建容器文件夹
+## 创建容器文件夹
 ![本地图片](/public/img/work/MoviePilot-V2/4.png)
-创建媒体文件夹（于emby、qb需要一致）
+**创建媒体文件夹（于emby、qb需要一致）**
 ![本地图片](/public/img/work/MoviePilot-V2/5.png)
-Docker部署
+# Docker部署
 ![本地图片](/public/img/work/MoviePilot-V2/6.png)
 ![本地图片](/public/img/work/MoviePilot-V2/7.png)
-Docker环境变量需要注意（一下几个带❗均为需要设置的变量，否则无法进行）
-MOVIEPILOT_AUTO_UPDATE=release # 重启更新设置，默认release，需要更新就改成true
+## 注意⚠️
+**Docker环境变量需要注意（一下几个带❗均为需要设置的变量，否则无法进行）**
+- **MOVIEPILOT_AUTO_UPDATE=release # 重启更新设置，默认release，需要更新就改成true**
 
-❗PROXY_HOST=http://IP:端口 # HTTP 网络代理
+- **❗PROXY_HOST=http://IP:端口 # HTTP 网络代理**
 
-❗AUTH_SITE=iyuu # 设置认证站点名称为 iyuu，其他认证方式注意看目录进行修改
+- **❗AUTH_SITE=iyuu # 设置认证站点名称为 iyuu，其他认证方式注意看目录进行修改**
 
-❗IYUU_SIGN=xxxx # 设置 IYUU密钥，其他认证方式注意看目录进行修改
+- **❗IYUU_SIGN=xxxx # 设置 IYUU密钥，其他认证方式注意看目录进行修改**
 
-❗SUPERUSER=admin' # 设置超级管理员账户名为 admin，可自定义
+- **❗SUPERUSER=admin' # 设置超级管理员账户名为 admin，可自定义**
 
-❗API_TOKEN： API密钥，V1版本默认为moviepilot，V2版本需要配置为大于等于16个字符的复杂字符串 （如配置不符合要求将会强制重新生成，可在后台日志、env配置文件或系统设定中查看最新的值） 。在媒体服务器Webhook、微信回调等地址配置中需要加上?token=该值。
+- **❗API_TOKEN： API密钥，V1版本默认为moviepilot，V2版本需要配置为大于等于16个字符的复杂字符串 （如配置不符合要求将会强制重新生成，可在后台日志、env配置文件或系统设定中查看最新的值） 。在媒体服务器Webhook、微信回调等地址配置中需要加上?token=该值。**
 ![本地图片](/public/img/work/MoviePilot-V2/8.png)
-Docker Compose部署
+# Docker Compose部署
 ## Docker Compose 配置文件
 ```yaml
 services:
@@ -237,27 +247,27 @@ services:
 # 注意：容器将共享宿主机的网络堆栈，并且暴露的端口会与宿主机端口直接绑定。
  
 ````
-绿联云-Docker-项目-创建项目-输入名称，填写compose命令，点击立即部署即可
+**绿联云-Docker-项目-创建项目-输入名称，填写compose命令，点击立即部署即可**
 ![本地图片](/public/img/work/MoviePilot-V2/9.png)
-第一次安装，默认密码会出现在日志
+**第一次安装，默认密码会出现在日志**
 ![本地图片](/public/img/work/MoviePilot-V2/10.png)
-注意：初始管理员密码只会出现一次，如果不显示或者忘记了密码，需要去配置文件夹目录删除名为：user.db的文件，重启后即可重新在日志获取初始密码
+**注意：初始管理员密码只会出现一次，如果不显示或者忘记了密码，需要去配置文件夹目录删除名为：user.db的文件，重启后即可重新在日志获取初始密码**
 ![本地图片](/public/img/work/MoviePilot-V2/11.png)
-使用方法
-浏览器访问http://设备IP:3000
+**使用方法**
+**浏览器访问http://设备IP:3000**
 ![本地图片](/public/img/work/MoviePilot-V2/12.png)
-进去第一步，先把密码改了
+**进去第一步，先把密码改了**
 ![本地图片](/public/img/work/MoviePilot-V2/13.png)
-获取Github Token
+## **获取Github Token**
 https://github.com/settings/personal-access-tokens
 ![本地图片](/public/img/work/MoviePilot-V2/14.png)
 ![本地图片](/public/img/work/MoviePilot-V2/15.png)
 ![本地图片](/public/img/work/MoviePilot-V2/16.png)
-自定义主题风格
-效果
+## 自定义主题风格
+**效果**
 ![本地图片](/public/img/work/MoviePilot-V2/17.png)
 ![本地图片](/public/img/work/MoviePilot-V2/18.png)
-css代码
+### c**ss代码**
 ## Docker Compose 配置文件
 ```yaml
 html {
@@ -417,24 +427,24 @@ body, #app, .v-application {
 /* 响应式设计，针对宽度小于600px的设备，设置不同的模糊效果和阴影 */
  
 ````
-基本设置
-设定
-系统
+## 基本设置
+### 设定
+#### 系统
 ![本地图片](/public/img/work/MoviePilot-V2/19.png)
-下载器设置
-选择你自己使用的下载器，我这里使用的是QB
+##### 下载器设置
+**选择你自己使用的下载器，我这里使用的是QB**
 ![本地图片](/public/img/work/MoviePilot-V2/20.png)
 ![本地图片](/public/img/work/MoviePilot-V2/21.png)
-媒体服务器设置
-我这里使用的是Emby
+##### 媒体服务器设置
+**我这里使用的是Emby**
 ![本地图片](/public/img/work/MoviePilot-V2/22.png)
 ![本地图片](/public/img/work/MoviePilot-V2/23.png)
-存储 & 目录
-这次V2的改动相对来说方便一点，因为上下对应同一个类型的媒体库，配置的话更顺
+#### 存储 & 目录
+**这次V2的改动相对来说方便一点，因为上下对应同一个类型的媒体库，配置的话更顺**
 
-由于我使用的是网盘搭配，大家这个媒体库目录可以根据自己的需求来设置
+**由于我使用的是网盘搭配，大家这个媒体库目录可以根据自己的需求来设置**
 ![本地图片](/public/img/work/MoviePilot-V2/24.png)
-懒人设置二级分类策略（参考我这个分类会省不少事）我这个分类会没有儿童国漫日番，只有一个动漫
+**懒人设置二级分类策略（参考我这个分类会省不少事）我这个分类会没有儿童国漫日番，只有一个动漫**
 ![本地图片](/public/img/work/MoviePilot-V2/25.png)
 ```yaml
 ####### 配置说明 #######
@@ -655,69 +665,70 @@ tv:
 #	MN	蒙古国 蒙古
 ````
 
-````
-文件自动整理选项
-MoviePilot V2版本支持按目录设定是否通过下载器监控整理或者目录监控整理，内建集成了目录监控功能，无需安装第三方插件。
 
-下载器监控自动整理间隔为5分钟，设定中所有启用的下载器且设定了对应目录时都会自动整理。
+##### 文件自动整理选项
 
-目录监控为实时。但请避免对网盘目录使用目录监控，容易触发大量API请求导致被流控
+**MoviePilot V2版本支持按目录设定是否通过下载器监控整理或者目录监控整理，内建集成了目录监控功能，无需安装第三方插件。**
+
+**下载器监控自动整理间隔为5分钟，设定中所有启用的下载器且设定了对应目录时都会自动整理。**
+
+**目录监控为实时。但请避免对网盘目录使用目录监控，容易触发大量API请求导致被流控**
 ![本地图片](/public/img/work/MoviePilot-V2/26.png)
-如果使用Qbittorrent做为下载器，可在 QB设置->下载完成时运行外部程序 处填入：curl "http://localhost:3000/api/v1/transfer/now?token=moviepilot"，实现无需等待轮循下载完成后立即整理入库（地址、端口和token按实际调整，curl也可更换为wget）。
+**如果使用Qbittorrent做为下载器，可在QB设置->下载完成时运行外部程序处填入：curl"http://localhost:3000/api/v1/transfer/now?token=moviepilot"实现无需等待轮循下载完成后立即整理入库（地址、端口和token按实际调整，curl也可更换为wget）。**
 
 ![本地图片](/public/img/work/MoviePilot-V2/27.png)
-整理方式选项
-根据磁盘结构、空间大小、保种需要等综合决定使用哪种文件整理方式，并且MP也支持直接整理到网盘中。
+##### 整理方式选项
+**根据磁盘结构、空间大小、保种需要等综合决定使用哪种文件整理方式，并且MP也支持直接整理到网盘中。**
 
-复制：复制一份副本，多占用一份空间。（想要做种，又想整理到网盘选择该选项即可）
+**复制：复制一份副本，多占用一份空间。（想要做种，又想整理到网盘选择该选项即可）**
 
-移动：移动文件存储位置，会影响原文件做种。
+**移动：移动文件存储位置，会影响原文件做种。**
 
-硬链接：一份文件生成多个文件入口，但只占用一份存储空间，只有所有入口都删除后才能释放文件占用空间；可以修改硬链接后的文件名但不会影响原文件做种（不能修改文件内容）；要求在同一磁盘/存储空间/映射路径下才能硬链接。
+**硬链接：一份文件生成多个文件入口，但只占用一份存储空间，只有所有入口都删除后才能释放文件占用空间；可以修改硬链接后的文件名但不会影响原文件做种（不能修改文件内容）；要求在同一磁盘/存储空间/映射路径下才能硬链接。**
 
-软链接：类似于快捷方式，原文件删除后软链接即会失效；使用软链接时的原文件路径需要与生成软链接时的原文件路径保持一致，否则无法使用，也就是在docker环境下，映射前后的目录路径需要一致。
+**软链接：类似于快捷方式，原文件删除后软链接即会失效；使用软链接时的原文件路径需要与生成软链接时的原文件路径保持一致，否则无法使用，也就是在docker环境下，映射前后的目录路径需要一致。**
 
-覆盖模式选项
+##### 覆盖模式选项
 ![本地图片](/public/img/work/MoviePilot-V2/28.png)
-从不：当媒体库中存在同名文件时中断整理，历史记录中将产生错误的整理记录。
+**从不：当媒体库中存在同名文件时中断整理，历史记录中将产生错误的整理记录。**
 
-总是覆盖：直接使用下载的文件覆盖媒体库中的同名文件。
+**总是覆盖：直接使用下载的文件覆盖媒体库中的同名文件。**
 
-按大小覆盖：当下载文件比媒体库中已有文件更大时覆盖已有文件，否则中断整理并在历史记录中将产生错误的整理记录。
+**按大小覆盖：当下载文件比媒体库中已有文件更大时覆盖已有文件，否则中断整理并在历史记录中将产生错误的整理记录。**
 
-仅保留最新版本：同一个电影或者电视剧剧集，删除媒体库中的其它版本文件（包括文件名不一致的），仅保留下载整理的最新版本。
+**仅保留最新版本：同一个电影或者电视剧剧集，删除媒体库中的其它版本文件（包括文件名不一致的），仅保留下载整理的最新版本。**
 
-下载目录和媒体库目录均支持一级、二级分类：
+**下载目录和媒体库目录均支持一级、二级分类：**
 
-一级分类为媒体类型，固定分为：电影、电视剧
+**一级分类为媒体类型，固定分为：电影、电视剧**
 ![本地图片](/public/img/work/MoviePilot-V2/29.png)
-二级分类为媒体类别，通过分类策略结合TheMovieDb的元数据确定分类
+**二级分类为媒体类别，通过分类策略结合TheMovieDb的元数据确定分类**
 
-电影
+**电影**
 ![本地图片](/public/img/work/MoviePilot-V2/30.png)
-电视剧
+**电视剧**
 ![本地图片](/public/img/work/MoviePilot-V2/31.png)
-媒体类型和媒体类别为使用这个目录的判定条件，按媒体的元数据进行匹配，全部代表匹配通过。
+**媒体类型和媒体类别为使用这个目录的判定条件，按媒体的元数据进行匹配，全部代表匹配通过。**
 
-简单来说在V2版本中，无论是下载目录还是媒体目录都是：
+**简单来说在V2版本中，无论是下载目录还是媒体目录都是：**
 
-开启：按类型分类，即会自动生成一级目录：电影、电视剧。
+**开启：按类型分类，即会自动生成一级目录：电影、电视剧。**
 
-开启：按类别分类，即会自动生成电影、电视剧的二级目录。二级分类策略修改则需要在插件：二级分类策略，进行修改。
+**开启：按类别分类，即会自动生成电影、电视剧的二级目录。二级分类策略修改则需要在插件：二级分类策略，进行修改。**
 
-实现原理
+**实现原理**
 
-举例，我现在路径设置，（刮削目录）/video/links 下载目录/video/link
+**举例，我现在路径设置，（刮削目录）/video/links下载目录/video/link**
 
-先是QB、TR等下载器下载的内容—/video/link—通过目录监控整理、刮削分类—/video/links，从而让你的媒体库读取已经刮削好的媒体目录，生成海报墙
+**先是QB、TR等下载器下载的内容—/video/link—通过目录监控整理、刮削分类—/video/links，从而让你的媒体库读取已经刮削好的媒体目录，生成海报墙**
 ![本地图片](/public/img/work/MoviePilot-V2/32.png)
-整理刮削
-## 电影重命名格式
+##### 整理刮削
+###### 电影重命名格式
 ```yaml
 {{title}} ({{year}})/{{title}} ({{year}}) - {{videoFormat}}{% if videoCodec %}.{{videoCodec}}{% endif %}{% if audioCodec %}.{{audioCodec}}{% endif %}{% if customization %}.{{customization}}{% endif %}{%if effect %}.{{effect}}{% endif %}{% if releaseGroup %}.{{releaseGroup}}{% endif %}{{fileExt}}
  
 ````
-## 电影支持的配置项
+###### 电影支持的配置项
 ```yaml
 title： TMDB/豆瓣中的标题
 en_title： TMDB中的英文标题 （暂不支持豆瓣）
@@ -742,12 +753,12 @@ fileExt：文件扩展名
 customization：自定义占位符
  
 ````
-## 电视剧重命名格式
+###### 电视剧重命名格式
 ```yaml
 {{title}} ({{year}})/Season {{season}}/{{title}} {{season_episode}} {{videoFormat}}{% if customization %}.{{customization}}{% endif %}{% if releaseGroup %}.{{releaseGroup}}{% endif %}{{fileExt}}
  
 ````
-## 电视剧额外支持的配置项
+###### 电视剧额外支持的配置项
 ```yaml
 season： 季号
 season_year：季年份
@@ -758,9 +769,9 @@ episode_title： 集标题
 ````
 效果图
 ![本地图片](/public/img/work/MoviePilot-V2/33.png)
-站点
-Cookiecloud部署
-## Docker Compose 配置文件
+# 站点
+## Cookiecloud部署
+### Docker Compose 配置文件
 ```yaml
 services:  # 定义服务
   cookiecloud:  # 服务名称
@@ -770,183 +781,182 @@ services:  # 定义服务
             - "8088:8088"  # 将容器的端口 3000 映射到宿主机的 3002 端口
  
 ````
-Docker 部署
-该容器不需要任何文件夹映射，环境变量修改，只是以服务端形式运行在docker上，所有默认即可。
+### Docker 部署
+**该容器不需要任何文件夹映射，环境变量修改，只是以服务端形式运行在docker上，所有默认即可。**
 
-Cookiecloud使用方法
-这个是将浏览器中的PT站cookie同步到本地的容器，MP可以通过这个插件同步站点，拥有多站点的可以使用这个容器，会自动同步。
+### Cookiecloud使用方法
+**这个是将浏览器中的PT站cookie同步到本地的容器，MP可以通过这个插件同步站点，拥有多站点的可以使用这个容器，会自动同步。**
 ![本地图片](/public/img/work/MoviePilot-V2/34.png)
-第一步：浏览器访问http://设备ip:8088，出现以上字样即代表部署成功。（仅限在同一个局域网的情况下这么填，如果在外网同步话填的内容是不一样的，在这不过多赘述了）
+ - **第一步：浏览器访问http://设备ip:8088，出现以上字样即代表部署成功。（仅限在同一个局域网的情况下这么填，如果在外网同步话填的内容是不一样的，在这不过多赘述了）**
 
-第二步：在谷歌、edge等浏览器下载上安装插件，进入拓展程序（每个浏览器进入方式不一样）具体可以百度使用方法不具体展开了。在拓展商店搜索：CookieCloud。
+ - **第二步：在谷歌、edge等浏览器下载上安装插件，进入拓展程序（每个浏览器进入方式不一样）具体可以百度使用方法不具体展开了。在拓展商店搜索：CookieCloud。**
 ![本地图片](/public/img/work/MoviePilot-V2/35.png)
-同步域名关键词填入你想同步的PT站点域名，然后先测试一下，看看能不能通，再点手动同步，最后点保存。
+**同步域名关键词填入你想同步的PT站点域名，然后先测试一下，看看能不能通，再点手动同步，最后点保存。**
 ![本地图片](/public/img/work/MoviePilot-V2/36.png)
 ![本地图片](/public/img/work/MoviePilot-V2/37.png)
-手动执行一下同步站点功能即可
+**手动执行一下同步站点功能即可**
 ![本地图片](/public/img/work/MoviePilot-V2/38.png)
-可以看到站点管理已经同步完成，没有同步成功的可以点击右下角加好
+**可以看到站点管理已经同步完成，没有同步成功的可以点击右下角加好**
 ![本地图片](/public/img/work/MoviePilot-V2/39.png)
-自定义添加站点
+**自定义添加站点**
 ![本地图片](/public/img/work/MoviePilot-V2/40.png)
-打开站点网页，F12调出开发者模式，一般站点cookie值在network下的index.php下，复制值填入即可。
+**打开站点网页，F12调出开发者模式，一般站点cookie值在network下的index.php下，复制值填入即可。**
 ![本地图片](/public/img/work/MoviePilot-V2/41.png)
-PS：馒头站点添加方式：只需要填写网址+请求头+令牌即可
+**PS：馒头站点添加方式：只需要填写网址+请求头+令牌即可**
 ![本地图片](/public/img/work/MoviePilot-V2/42.png)
 ![本地图片](/public/img/work/MoviePilot-V2/43.png)
 ![本地图片](/public/img/work/MoviePilot-V2/44.png)
-规则设置
-自定义规则（感谢雁窝大佬的分享）
-MoviePilot-V2加入了自定义规则，可以自定义编写用于筛选资源的规则列表，主要用于管理资源的分类和过滤条件。每个条目都有一个id（标识符）、name（名称）、include（包含条件）和exclude（排除条件）等字段。自定义规则列表能帮助用户更加精准、快捷地找到符合偏好的高质量资源，同时保证了筛选的灵活性和效率，让MP的订阅功能得到了史诗级的提升。
+## 规则设置
+### 自定义规则（感谢雁窝大佬的分享）
+`MoviePilot-V2加入了自定义规则，可以自定义编写用于筛选资源的规则列表，主要用于管理资源的分类和过滤条件。每个条目都有一个id（标识符）、name（名称）、include（包含条件）和exclude（排除条件）等字段。自定义规则列表能帮助用户更加精准、快捷地找到符合偏好的高质量资源，同时保证了筛选的灵活性和效率，让MP的订阅功能得到了史诗级的提升。`
 ![本地图片](/public/img/work/MoviePilot-V2/45.png)
-同时作者还加入了导入、分享功能，方便各位同学直接抄作业。
-分享一套自定义规则
-## Docker Compose 配置文件
+**同时作者还加入了导入、分享功能，方便各位同学直接抄作业。**
+### **分享一套自定义规则**
+#### **Docker Compose 配置文件**
 ```yaml
 [{"id":"Complete","name":"Complete","include":"(全|共)\\d(集|期)|完结|合集|Complete","exclude":""},{"id":"filterGlobal","name":"filterGlobal","include":"","exclude":"(?i)日语无字|先行|DV|MiniBD|DIY原盘|iPad|UPSCALE|AV1|BDMV|RMVB|DVD|vcd|480p|OPUS","seeders":""},{"id":"filerGroup","name":"filerGroup","include":"","exclude":"(?i)SubsPlease|Up to 21°C|VARYG|TELESYNC|NTb|sGnb|BHYS|DBD|HDH|COLLECTiVE|SRVFI|HDSPad"},{"id":"filterMovie","name":"filterMovie","include":"","exclude":"","seeders":"","size_range":"0-22000"},{"id":"filterSeries","name":"filterSeries","include":"","exclude":"","size_range":"0-102400"},{"id":"AnimeGroup","name":"AnimeGroup","include":"7³ACG|VCB-Studio","exclude":"","size_range":""},{"id":"Audiences","name":"Audiences","include":"ADE|ADWeb","exclude":"","seeders":""},{"id":"HHWEB","name":"HHWEB","include":"HHWEB","exclude":""},{"id":"Crunchyroll","name":"Crunchyroll","include":"CR|Crunchyroll","exclude":""},{"id":"Netflix","name":"Netflix","include":"Netflix|NF","exclude":""},{"id":"B-Global","name":"B-Global","include":"B-Global|BG","exclude":""},{"id":"AMZN","name":"AMZN","include":"AMZN|Amazon","exclude":""},{"id":"HQ","name":"HQ","include":"HQ|高码|EDR","exclude":"","size_range":""},{"id":"DDP","name":"DDP","include":"DDP","exclude":""}]
  
 ````
-Complete：筛选全集或完结资源。include中有匹配“(全|共)\d(集|期)|完结|合集|Complete”内容的条件，表示要包含这些关键词的资源。
+ - **Complete：筛选全集或完结资源。include中有匹配“(全|共)\d(集|期)|完结|合集|Complete”内容的条件，表示要包含这些关键词的资源。**
 
-filterGlobal：全局过滤器，用于排除不需要的资源。exclude字段包含多种过滤关键词（如“日语无字”、“先行”等），排除与这些关键词匹配的资源。
+ - **filterGlobal：全局过滤器，用于排除不需要的资源。exclude字段包含多种过滤关键词（如“日语无字”、“先行”等），排除与这些关键词匹配的资源。**
 
-filerGroup：用于排除不符合要求的小组资源，exclude字段包含多个小组的名称（如“SubsPlease”、“Up to 21°C”等）。
+ - **filerGroup：用于排除不符合要求的小组资源，exclude字段包含多个小组的名称（如“SubsPlease”、“Upto21°C”等）。**
 
-filterMovie：电影资源的过滤规则，size_range字段设置了大小限制为0到22000MB。
+ - **filterMovie：电影资源的过滤规则，size_range字段设置了大小限制为0到22000MB。**
 
-filterSeries：剧集资源的过滤规则，size_range字段设置了大小限制为0到102400MB。
+ - ****filterSeries：剧集资源的过滤规则，size_range字段设置了大小限制为0到102400MB。**
 
-AnimeGroup：特定动漫小组的筛选规则，include字段包含“7³ACG”和“VCB-Studio”等。
+ - **AnimeGroup：特定动漫小组的筛选规则，include字段包含“7³ACG”和“VCB-Studio”等。**
 
-Audiences：包含特定观众群体的关键词，如“ADE”和“ADWeb”。
+ - **Audiences：包含特定观众群体的关键词，如“ADE”和“ADWeb”。**
 
-HHWEB：筛选包含“HHWEB”关键字的资源。
+ - **HHWEB：筛选包含“HHWEB”关键字的资源。**
 
-Crunchyroll：筛选包含“CR”或“Crunchyroll”关键词的资源。
+ - **Crunchyroll：筛选包含“CR”或“Crunchyroll”关键词的资源。**
 
-Netflix：筛选包含“Netflix”或“NF”关键词的资源。
+ - **Netflix：筛选包含“Netflix”或“NF”关键词的资源。**
 
-B-Global：筛选包含“B-Global”或“BG”关键词的资源。
+ - **B-Global：筛选包含“B-Global”或“BG”关键词的资源。**
 
-AMZN：筛选包含“AMZN”或“Amazon”关键词的资源。
+ - **AMZN：筛选包含“AMZN”或“Amazon”关键词的资源。**
 
-HQ：筛选包含高清资源（“HQ”或“高码”或“EDR”）。
+ - **HQ：筛选包含高清资源（“HQ”或“高码”或“EDR”）。**
 
-DDP：筛选包含“DDP”关键词的资源。
+ - **DDP：筛选包含“DDP”关键词的资源。**
 
-优先级规则（再次感谢雁窝大佬分享）
-MoviePilot-V2再次更新了优先级规则的高度自定义，让有动手能力的大佬，可以手搓完美契合自己的订阅规则。本次升级将订阅规则细分至媒体类型（电影、电视剧）与媒体类别（根据你的二级分类而定）。比如我想自定义电影的订阅规则，可以自定义。我还想自定义二级分类下华语电影的订阅规则，同样可以自定义。
+### **优先级规则（再次感谢雁窝大佬分享）**
+`MoviePilot-V2再次更新了优先级规则的高度自定义，让有动手能力的大佬，可以手搓完美契合自己的订阅规则。本次升级将订阅规则细分至媒体类型（电影、电视剧）与媒体类别（根据你的二级分类而定）。比如我想自定义电影的订阅规则，可以自定义。我还想自定义二级分类下华语电影的订阅规则，同样可以自定义。`
 
 ![本地图片](/public/img/work/MoviePilot-V2/46.png)
-MPV1的订阅规则是根据设置优先级去匹配你的规则，站点资源命中了该规则就会自动下载。但有优先级匹配会有部分弊端，比如没办法指定追剧定向某个站点小组，必须去订阅管理中手动设置。但电视剧、综艺等，更新勤奋的只有某几个小组，但MP会通过优先级，去下载其他小组资源，导致剧集资源的不统一性。V2进行了全新升级，作者大大真的很厉害。
+`MPV1的订阅规则是根据设置优先级去匹配你的规则，站点资源命中了该规则就会自动下载。但有优先级匹配会有部分弊端，比如没办法指定追剧定向某个站点小组，必须去订阅管理中手动设置。但电视剧、综艺等，更新勤奋的只有某几个小组，但MP会通过优先级，去下载其他小组资源，导致剧集资源的不统一性。V2进行了全新升级，作者大大真的很厉害。`
 ![本地图片](/public/img/work/MoviePilot-V2/47.png)
-分享一套优先级规则（基于上面分享的自定义规则）
-## Docker Compose 配置文件
+### 分享一套优先级规则（基于上面分享的自定义规则）
+#### Docker Compose 配置文件
 ```yaml
 [{"name":"前置过滤","rule_string":"filterGlobal& !BLU & !REMUX & !3D & !DOLBY &filerGroup","media_type":"","category":""},{"name":"动画电影","rule_string":" SPECSUB & 4K & BLURAY & H265 > CNSUB & 4K & BLURAY & H265 > CNSUB & 4K & BLURAY > CNSUB & 1080P & BLURAY > CNSUB & 4K > CNSUB & 1080P ","media_type":"电影","category":"动画电影"},{"name":"华语电影","rule_string":" 4K & BLURAY & H265 > 1080P & BLURAY > 4K > 1080P ","media_type":"电影","category":"华语电影"},{"name":"外语电影","rule_string":" SPECSUB & 4K & BLURAY & H265 &filterMovie> CNSUB & 4K & BLURAY & H265 &filterMovie> CNSUB & 1080P & BLURAY &filterMovie> CNSUB & 4K &filterMovie> CNSUB & 1080P &filterMovie","media_type":"电影","category":"外语电影"},{"name":"日番","rule_string":"AnimeGroup& CNSUB & BLURAY & 1080P >Audiences& H265 & BLURAY & 1080P >Audiences&AMZN&HHWEB& CNSUB & 1080P >Audiences&Crunchyroll& CNSUB & 1080P >Audiences&Netflix&HHWEB& CNSUB & 1080P >Audiences&B-Global& 4K & CNSUB >Audiences&B-Global& 1080P & CNSUB >Audiences&HHWEB& CNSUB & 1080P > CNSUB & BLURAY & 1080P > 1080P & CNSUB > 1080P ","media_type":"电视剧","category":"日番"},{"name":"国漫","rule_string":" 4K &Audiences&HHWEB&DDP> 4K &Audiences&HHWEB> 1080P &Audiences&HHWEB> 4K > 1080P > 720P ","media_type":"电视剧","category":"国漫"},{"name":"纪录片","rule_string":" 4K & BLURAY > 1080P & BLURAY > 4K > 1080P ","media_type":"电视剧","category":"纪录片"},{"name":"综艺","rule_string":" 4K & WEBDL &Complete> 4K & WEBDL &HHWEB> WEBDL & 1080P &HHWEB> 4K & WEBDL &Audiences> 1080P &Audiences& WEBDL > 1080P ","media_type":"电视剧","category":"综艺"},{"name":"国产剧","rule_string":" 4K & WEBDL &HQ> 4K & WEBDL > 4K & WEBDL > 1080P > 720P ","media_type":"电视剧","category":"国产剧"},{"name":"欧美剧","rule_string":" SPECSUB & 1080P & BLURAY &filterSeries> 1080P & WEBDL & CNSUB &filterSeries> CNSUB &filterSeries","media_type":"电视剧","category":"欧美剧"},{"name":"日韩剧","rule_string":" SPECSUB & 1080P & BLURAY &filterSeries> CNSUB & 1080P &filterSeries> 1080P & CNSUB &filterSeries> CNSUB &filterSeries ","media_type":"电视剧","category":"日韩剧"},{"name":"现场","rule_string":" CNSUB & 4K > CNSUB & 1080P > 4K > 1080P > !720P ","media_type":"电影","category":"现场"}]
  
 ````
-前置过滤：用于在进行其他筛选之前，排除特定的资源格式。rule_string包含过滤条件filterGlobal，并排除了“BLU”、“REMUX”、“3D”和“DOLBY”格式，同时排除了小组过滤条件filerGroup。
+ - 前置过滤：用于在进行其他筛选之前，排除特定的资源格式。rule_string包含过滤条件filterGlobal，并排除了“BLU”、“REMUX”、“3D”和“DOLBY”格式，同时排除了小组过滤条件filerGroup。
 
-动画电影：针对动画电影的优先规则，按以下顺序选择：
+ - 动画电影：针对动画电影的优先规则，按以下顺序选择：
 
-有外挂字幕的4K H265蓝光
+ - 有外挂字幕的4K H265蓝光
 
-有中文内嵌字幕的4K H265蓝光
+ - 有中文内嵌字幕的4K H265蓝光
 
-有中文内嵌字幕的4K蓝光
+ - 有中文内嵌字幕的4K蓝光
 
-有中文内嵌字幕的1080P蓝光
+ - 有中文内嵌字幕的1080P蓝光
 
-有中文内嵌字幕的4K或1080P
+ - 有中文内嵌字幕的4K或1080P
 
-华语电影：针对华语电影的优先规则，按以下顺序选择：
+ - 华语电影：针对华语电影的优先规则，按以下顺序选择：
 
-4K H265蓝光
+ - 4K H265蓝光
 
-1080P蓝光
+ - 1080P蓝光
 
-4K或1080P
+ - 4K或1080P
 
-外语电影：针对外语电影的优先规则，结合filterMovie的条件，按以下顺序选择：
+ - 外语电影：针对外语电影的优先规则，结合filterMovie的条件，按以下顺序选择：
 
-有外挂字幕的4K H265蓝光
+ - 有外挂字幕的4K H265蓝光
 
-有中文内嵌字幕的4K H265蓝光
+ - 有中文内嵌字幕的4K H265蓝光
 
-有中文内嵌字幕的1080P蓝光
+ - 有中文内嵌字幕的1080P蓝光
 
-有中文内嵌字幕的4K或1080P
+ - 有中文内嵌字幕的4K或1080P
 
-日番：针对日本动漫剧集的优先规则，按以下顺序选择：
+ - 日番：针对日本动漫剧集的优先规则，按以下顺序选择：
 
-动漫小组资源，包含中文内嵌字幕的1080P蓝光
+ - 动漫小组资源，包含中文内嵌字幕的1080P蓝光
 
-包含外挂字幕的1080P H265蓝光或来自特定平台的1080P
+ - 包含外挂字幕的1080P H265蓝光或来自特定平台的1080P
 
-各种平台的4K或1080P
+ - 各种平台的4K或1080P
 
-国漫：针对中国动漫剧集的优先规则，按以下顺序选择：
+ - 国漫：针对中国动漫剧集的优先规则，按以下顺序选择：
 
-包含外挂字幕的4K，优先有DDP音轨的资源
+ - 包含外挂字幕的4K，优先有DDP音轨的资源
 
-各种1080P和4K
+ - 各种1080P和4K
 
-纪录片：针对纪录片资源的优先规则，按以下顺序选择：
+ - 纪录片：针对纪录片资源的优先规则，按以下顺序选择：
 
-4K蓝光
+ - 4K蓝光
 
-1080P蓝光
+ - 1080P蓝光
 
-各种4K和1080P
+ - 各种4K和1080P
 
-综艺：针对综艺节目的优先规则，按以下顺序选择：
+ - 综艺：针对综艺节目的优先规则，按以下顺序选择：
 
-完整的4K WEBDL
+ - 完整的4K WEBDL
 
-包含HHWEB或Audiences字幕组的4K或1080P WEBDL
+ - 包含HHWEB或Audiences字幕组的4K或1080P WEBDL
 
-国产剧：针对国产电视剧的优先规则，按以下顺序选择：
+ - 国产剧：针对国产电视剧的优先规则，按以下顺序选择：
 
-高清4K WEBDL，优先包含HQ的高码率资源
+ - 高清4K WEBDL，优先包含HQ的高码率资源
 
-各种4K、1080P和720P的WEBDL
+ - 各种4K、1080P和720P的WEBDL
 
-欧美剧：针对欧美电视剧的优先规则，结合filterSeries的条件，按以下顺序选择：
+ - 欧美剧：针对欧美电视剧的优先规则，结合filterSeries的条件，按以下顺序选择：
 
-有外挂字幕的1080P蓝光
+ - 有外挂字幕的1080P蓝光
 
-1080P WEBDL，包含中文内嵌字幕
+ - 1080P WEBDL，包含中文内嵌字幕
 
-其他包含中文内嵌字幕的资源
+ - 其他包含中文内嵌字幕的资源
 
-日韩剧：针对日韩电视剧的优先规则，按以下顺序选择：
+ - 日韩剧：针对日韩电视剧的优先规则，按以下顺序选择：
 
-有外挂字幕的1080P蓝光
+ - 有外挂字幕的1080P蓝光
 
-包含中文内嵌字幕的1080P资源
+ - 包含中文内嵌字幕的1080P资源
 
-现场：针对现场表演或现场记录的资源，按以下顺序选择：
+ - 现场：针对现场表演或现场记录的资源，按以下顺序选择：
 
-中文内嵌字幕的4K或1080P
+ - 中文内嵌字幕的4K或1080P
 
-排除720P
+ - 排除720P
 
-各位大佬可以根据自己的情况进行手动调整，MP-V1的订阅也可以通过手动导入的方式进行添加
+**各位大佬可以根据自己的情况进行手动调整，MP-V1的订阅也可以通过手动导入的方式进行添加**
 ![本地图片](/public/img/work/MoviePilot-V2/48.png)
-下载规则
+## 下载规则
 同样V2相比于V1的站点优先/做种数优先提供了更多的选择，且可以同时进行多种选择，排在前面的优先级越高，未选择的项不纳入排序
 ![本地图片](/public/img/work/MoviePilot-V2/49.png)
-搜索&下载
+## 搜索&下载
 ![本地图片](/public/img/work/MoviePilot-V2/50.png)
-订阅
+## 订阅
 ![本地图片](/public/img/work/MoviePilot-V2/51.png)
-订阅流程图
+## 订阅流程图
 ![本地图片](/public/img/work/MoviePilot-V2/52.png)
-词表(再再次感谢雁窝大佬分享）
+## 词表(再再次感谢雁窝大佬分享）
 ![本地图片](/public/img/work/MoviePilot-V2/53.png)
-自定义识别词
-## Docker Compose 配置文件
+## 自定义识别词
 ```yaml
 \[Movie\]
 episode\.\d{1}
@@ -993,8 +1003,7 @@ S(eason)? ?0?([2-9]) *\[(OVA|OAD)0?\(?(\d)?\)?\] => S0E\2\4
 (?<!-)(Disney\+|playWEB|Crunchyroll|Netflix|Amazon|AppleTV\+) => -\1
  
 ````
-自定义制作组/字幕组
-## Docker Compose 配置文件
+## 自定义制作组/字幕组
 ```yaml
 喵萌奶茶屋
 风车字幕组
@@ -1046,14 +1055,13 @@ Breeze@Sunny
 Rain@Sunny
 RLeaves
 ````
-自定义占位符
-## Docker Compose 配置文件
+## 自定义占位符
 ```yaml
 \b(简繁内封|简繁日内封|简繁日英内封|简繁官字内封|官简内封|简日双语|简体内封|简体内嵌|繁体内嵌|简英双语|简繁外挂|简体|HDR|DoVi)\b
  
 ````
-文件整理屏蔽词
-## Docker Compose 配置文件
+## 文件整理屏蔽词
+
 ```yaml
 __\w{6}/
 Special Ending Movie
