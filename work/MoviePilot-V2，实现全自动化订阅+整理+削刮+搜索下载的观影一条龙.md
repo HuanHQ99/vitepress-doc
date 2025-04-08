@@ -674,7 +674,7 @@ tv:
 
 **目录监控为实时。但请避免对网盘目录使用目录监控，容易触发大量API请求导致被流控**
 ![本地图片](/public/img/work/MoviePilot-V2/26.png)
-如果使用Qbittorrent做为下载器，可在QB设置->下载完成时运行外部程序处填入：curl"http://localhost:3000/api/v1/transfer/now?token=moviepilot" 实现无需等待轮循下载完成后立即整理入库（地址、端口和token按实际调整，curl也可更换为wget）。
+如果使用Qbittorrent做为下载器，可在 QB设置->下载完成时运行外部程序 处填入：curl "http://localhost:3000/api/v1/transfer/now?token=moviepilot"，实现无需等待轮循下载完成后立即整理入库（地址、端口和token按实际调整，curl也可更换为wget）。
  
 ![本地图片](/public/img/work/MoviePilot-V2/27.png)
 ##### 整理方式选项
