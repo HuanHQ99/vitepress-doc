@@ -43,7 +43,7 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
-:root {
+ :root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
@@ -136,17 +136,3 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
-<div class="feature-flex">
-  <div class="feature-item">
-    <!-- Symedia 块内容 -->
-  </div>
-  <div class="feature-item">
-    <!-- FastEmby 块内容 -->
-  </div>
-  <div class="feature-item">
-    <!-- MoviePilotV2 块内容 -->
-  </div>
-  <div class="feature-item">
-    <!-- Nezha探针 块内容 -->
-  </div>
-</div>

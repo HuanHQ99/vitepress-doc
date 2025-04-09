@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 文章
-      link: /work/什么是docker-compose.md
+      link: 
     - theme: alt
       text: 介绍
 
@@ -21,7 +21,7 @@ features:
     icon:
       src: /img/icon/symedia_B.png
     details:  ”生成strm、刮削元数据集于一身“
-    link: /work/Emby直链115神器，削刮、整理、重命名（Symedia+FastEmby）.md
+    link: /work/Symedia
     linkText: 查看详情
   - title: FastEmby
     icon:
